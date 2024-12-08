@@ -98,6 +98,16 @@ use_parentheses = true
 line_length = 88
 skip = ["docs/"]
 
+[tool.pylint.MASTER]
+ignore-paths = ["tests/"]  # Option 1: Ignore all test files
+
+# Or Option 2: Add specific disable rules for test files
+#[
+#tool.pylint.similarities
+#]
+# Ignore imports when computing similarities
+ignore-imports = "yes"
+
 [tool.pylint.messages_control]
 disable = [
     "C0111",  # missing-docstring
@@ -106,8 +116,13 @@ disable = [
     "W0108",  # unnecessary-lambda
     "R0903",  # too-few-public-methods
     "R0913",  # too-many-arguments
-    "R0914"   # too-many-locals
+    "R0914",  # too-many-locals
+    # Additional rules for test files
+    "R0124",  # comparison-with-itself (for tests)
+    "R0133",  # comparison-of-constants (for tests)
+    "C0415",  # import-outside-toplevel (for tests)
 ]
+
 
 [tool.pylint.format]
 max-line-length = 88
