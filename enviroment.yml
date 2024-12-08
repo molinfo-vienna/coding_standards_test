@@ -1,0 +1,25 @@
+# When using this, you need to change the gihub actions files to use the environment.yml file instead of the requirements.txt file.
+# Also the installation would look different:
+#############
+## Create and activate conda environment
+# conda env create -f environment.yml
+# conda activate your-project
+
+## Install your package in editable mode
+#pip install -e ".[dev,viz,docs]"
+#############
+
+name: your-project
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.8
+  - pytorch>=2.0.0
+  - scikit-learn>=1.2.0
+  - numpy>=1.24.0
+  - pandas>=2.0.0
+  - pip
+  - pip:
+    - black>=23.3.0  # if not available in conda
+    - any-other-pip-only-package

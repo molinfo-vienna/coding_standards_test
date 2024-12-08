@@ -1,0 +1,132 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "your-package-name"
+version = "0.1.0"
+description = "A machine learning package"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "MIT"}
+authors = [
+    {name = "Your Name", email = "your.email@example.com"},
+]
+maintainers = [
+    {name = "Your Name", email = "your.email@example.com"},
+]
+keywords = ["machine learning", "deep learning", "pytorch"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+dependencies = [
+    "torch>=2.0.0",
+    "torchvision>=0.15.0",
+    "scikit-learn>=1.2.0",
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+]
+
+[project.optional-dependencies]
+viz = [
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "plotly>=5.13.0",
+]
+dev = [
+    "black>=23.3.0",
+    "isort>=5.12.0",
+    "pylint>=2.17.0",
+    "pydocstyle>=6.3.0",
+    "pytest>=7.3.1",
+    "pytest-cov>=4.1.0",
+    "build>=0.10.0",
+    "mypy>=1.0.0",
+]
+docs = [
+    "sphinx>=6.0.0",
+    "sphinx-rtd-theme>=1.2.0",
+    "sphinx-autodoc-typehints>=1.22.0",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/username/project"
+"Bug Tracker" = "https://github.com/username/project/issues"
+"Documentation" = "https://project.readthedocs.io/"
+"Source Code" = "https://github.com/username/project"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/your_package"]
+
+[tool.pytest.ini_options]
+#addopts = "--cov=src--cov-report=xml --cov-report=term-missing"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::UserWarning",
+]
+
+[tool.coverage.run]
+source = ["src"]
+omit = ["tests/*", "setup.py"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+extend-exclude = '''
+# A regex preceded with ^/ will apply only to files and directories
+# in the root of the project.
+^/docs/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 88
+skip = ["docs/"]
+
+[tool.pylint.messages_control]
+disable = [
+    "C0111",  # missing-docstring
+    "C0103",  # invalid-name
+    "W0621",  # redefined-outer-name
+    "W0108",  # unnecessary-lambda
+    "R0903",  # too-few-public-methods
+    "R0913",  # too-many-arguments
+    "R0914"   # too-many-locals
+]
+
+[tool.pylint.format]
+max-line-length = 88
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.pydocstyle]
+convention = "google"
+add_select = [
+    "D204",  # 1 blank line required after class docstring
+    "D400",  # First line should end with a period
+    "D401"   # First line should be in imperative mood
+]
+#add_ignore = [
+#    "D100"   # Missing docstring in public module
+#]
