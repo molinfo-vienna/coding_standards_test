@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "your-package-name"
+name = "coding_standards"
 version = "0.1.0"
 description = "A machine learning package"
 readme = "README.md"
@@ -64,10 +64,9 @@ docs = [
 "Source Code" = "https://github.com/username/project"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/your_package"]
+packages = ["src/software_src"]
 
 [tool.pytest.ini_options]
-#addopts = "--cov=src--cov-report=xml --cov-report=term-missing"
 testpaths = ["tests"]
 python_files = ["test_*.py"]
 filterwarnings = [

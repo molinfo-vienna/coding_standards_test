@@ -12,8 +12,8 @@
 
 1. **Clone and Install**
 ```bash
-git clone https://github.com/username/your-package
-cd your-package
+git clone https://github.com/molinfo-vienna/coding_standards_test
+cd coding_standards_test
 pip install -e ".[dev,viz,docs]"  # Install all dependencies
 ```
 
@@ -80,7 +80,7 @@ build-backend = "hatchling.build"
 2. **Project Metadata**
 ```toml
 [project]
-name = "your-package-name"
+name = "coding_standards"
 version = "0.1.0"
 description = "A machine learning package"
 readme = "README.md"
