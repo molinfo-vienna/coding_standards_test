@@ -231,6 +231,78 @@ pytest tests/test_core.py
 ```
 
 ### Pre-commit Hooks
+First, install pre-commit:
+
+```bash
+pip install pre-commit
+```
+
+Create a .pre-commit-config.yaml file in your project root
+
+Install the pre-commit hooks into your git repository:
+
+```bash
+pre-commit install
+```
+
+Now, whenever you try to make a git commit:
+
+The hooks will run automatically
+If any check fails, the commit will be blocked
+The failing tools will often automatically fix issues (like Black and isort)
+If fixes were applied, you'll need to git add the changed files and try to commit again
+
+Example workflow:
+```bash
+# Make some changes to your code
+git add .
+
+# Try to commit
+git commit -m "Updated feature X"
+
+# Pre-commit hooks will run automatically
+# If they fail, they might fix some issues
+
+# If fixes were applied, add the changes and try again
+git add .
+git commit -m "Updated feature X"
+```
+
+You can also run all checks manually:
+```bash
+# Run all checks on all files
+pre-commit run --all-files
+
+# Run a specific check
+pre-commit run black --all-files
+```
+
+Some helpful tips:
+
+Skip hooks temporarily if needed:
+
+```bash
+Copygit commit -m "Emergency fix" --no-verify
+```
+
+Update hooks to latest versions:
+
+```bash
+pre-commit autoupdate
+```
+
+If you want to see what would fail without blocking the commit, you can use:
+
+```bash
+pre-commit run --all-files --show-diff-on-failure
+```
+
+Clean pre-commit cache if you're having issues:
+
+```bash
+pre-commit clean
+```
+
 ```yaml
 # .pre-commit-config.yaml
 repos:
@@ -243,6 +315,8 @@ repos:
     hooks:
     -   id: isort
 ```
+
+
 
 ## Publishing
 

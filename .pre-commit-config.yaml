@@ -1,0 +1,40 @@
+repos:
+-   repo: https://github.com/psf/black
+    rev: 23.3.0
+    hooks:
+    -   id: black
+        language_version: python3.11
+
+-   repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+    -   id: isort
+
+-   repo: https://github.com/PyCQA/pylint
+    rev: v2.17.0
+    hooks:
+    -   id: pylint
+        args: [--rcfile=pyproject.toml]
+        additional_dependencies: [
+            "torch>=2.0.0",
+            "torchvision>=0.15.0",
+            "scikit-learn>=1.2.0",
+            "numpy>=1.24.0",
+            "pandas>=2.0.0",
+        ]
+
+-   repo: https://github.com/PyCQA/pydocstyle
+    rev: 6.3.0
+    hooks:
+    -   id: pydocstyle
+        additional_dependencies: ['toml']
+
+# Instead of the pytest repo, we'll use a local hook
+-   repo: local
+    hooks:
+    -   id: pytest
+        name: pytest
+        entry: pytest
+        language: system
+        pass_filenames: false
+        always_run: true

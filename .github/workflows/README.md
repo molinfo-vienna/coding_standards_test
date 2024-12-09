@@ -28,11 +28,8 @@ jobs:
     - name: Install dependencies  # Installs required packages
       run: |
         python -m pip install --upgrade pip
-        pip install black isort pylint pydocstyle pytest pytest-cov build
-        # Install project dependencies from requirements.txt
-        pip install -r requirements.txt
-        # Install package in editable mode
-        pip install -e .
+        pip install build
+        pip install -e ".[dev,viz,docs]"
     
     - name: Run Black  # Code formatting check
       run: black . --check

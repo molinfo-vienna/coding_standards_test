@@ -172,7 +172,7 @@ pytest tests/ --cov=src
 ## Contributing
 
 Please ensure your pull requests adhere to the following guidelines:
-- Run all formatters before committing
+- Run all formatters before committing (you can also use pre-commit)
 - Ensure all tests pass
 - Add tests for new features
 - Update documentation as needed
