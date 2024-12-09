@@ -154,8 +154,12 @@ For detailed information about package configuration and setup, see [README_PACK
 To run all checks locally:
 
 ```bash
+# activate any kind of virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
 # Install dependencies
-pip install -r requirements.txt
+pip install -e ".[dev,viz,docs]"
 
 # Run formatters
 black .
@@ -166,7 +170,7 @@ pylint src tests
 pydocstyle src
 
 # Run tests
-pytest tests/ --cov=src
+pytest tests/
 ```
 
 ## Contributing

@@ -143,16 +143,6 @@ python_version = "3.11"
 warn_return_any = true
 ```
 
-### MANIFEST.in
-```
-include LICENSE
-include README.md
-include requirements.txt
-recursive-include src/package_name/data *
-recursive-include docs *.rst
-global-exclude *.py[cod]
-```
-
 ## Dependency Management
 
 ### Installation Options
@@ -282,8 +272,15 @@ Some helpful tips:
 Skip hooks temporarily if needed:
 
 ```bash
-Copygit commit -m "Emergency fix" --no-verify
+git commit -m "Emergency fix" --no-verify
 ```
+
+Skip specific hooks for a single commit using SKIP environment variable:
+
+```bash
+SKIP=black,pytest git commit -m "your message"
+```
+or comment out complete sections.
 
 Update hooks to latest versions:
 
