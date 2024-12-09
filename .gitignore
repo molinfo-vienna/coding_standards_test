@@ -1,1 +1,7 @@
 .coverage
+# Date
+/data/raw/
+data/processed
+
+# Logs
+/logs/
